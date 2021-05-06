@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>edu.mak.course.model</OriginalElement>
+  <nodes>
+    <node x="454.734375" y="213.0">edu.mak.course.model.HotelBuilding</node>
+    <node x="499.75" y="573.0">edu.mak.course.model.Traveller</node>
+    <node x="718.7048611111111" y="0.0">edu.mak.course.model.Hotel</node>
+    <node x="475.234375" y="426.0">edu.mak.course.model.Floor</node>
+    <node x="748.5677083333334" y="257.0">edu.mak.course.model.OrganizationType</node>
+    <node x="102.75" y="573.0">edu.mak.course.model.Booking</node>
+    <node x="700.75" y="595.0">edu.mak.course.model.Group</node>
+    <node x="835.9427083333334" y="786.0">edu.mak.course.model.Contract</node>
+    <node x="177.234375" y="33.0">edu.mak.course.model.Amenity</node>
+    <node x="315.66666666666663" y="426.0">edu.mak.course.model.RoomType</node>
+    <node x="0.0" y="808.0">edu.mak.course.model.BookingItem</node>
+    <node x="780.0677083333334" y="426.0">edu.mak.course.model.Organization</node>
+    <node x="321.2048611111111" y="819.0">edu.mak.course.model.BookingClient</node>
+    <node x="267.75" y="573.0">edu.mak.course.model.Room</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.6614017769002961" x="512.5" y="496.50000000000006" />
+  <SelectedNodes>
+    <node>edu.mak.course.model.HotelBuilding</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
