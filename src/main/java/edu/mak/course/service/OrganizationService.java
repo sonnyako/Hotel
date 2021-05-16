@@ -1,16 +1,17 @@
-package edu.mak.course.service.organization.interfaces;
+package edu.mak.course.service;
 
 import edu.mak.course.dao.model.Organization;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author sonnyako <Makydon Sofiia>
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface IOrganizationService {
-    Organization getById(String id);
+public interface OrganizationService {
+    Optional<Organization> getById(String id);
 
     Organization create(Organization organization);
 
@@ -20,5 +21,5 @@ public interface IOrganizationService {
 
     List<Organization> getAll();
 
-    Organization getByName(String name);
+    Optional<Organization> getByName(String name);
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Document
+@Document(collection = "room")
 @QueryEntity
 @Data
 @Builder(toBuilder = true)

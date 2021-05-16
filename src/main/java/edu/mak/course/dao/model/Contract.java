@@ -43,7 +43,7 @@ public class Contract {
     @DBRef(lazy = true)
     @CascadeSave
     @Field("group")
-    private Group group;
+    private TravellerGroup travellerGroup;
 
     @Field("date")
     private Date date;

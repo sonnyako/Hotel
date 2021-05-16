@@ -1,6 +1,6 @@
 package edu.mak.course.dao.repository;
 
-import edu.mak.course.dao.model.Organization;
+import edu.mak.course.dao.model.TravellerGroup;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @since 1.0.0
  */
 @Repository
-public interface OrganizationRepository extends MongoRepository<Organization, String> {
+public interface TravellerGroupRepository extends MongoRepository<TravellerGroup, String> {
 }

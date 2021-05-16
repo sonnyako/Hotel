@@ -3,6 +3,7 @@ package edu.mak.course.dao.organization.impls;
 import edu.mak.course.dao.model.Organization;
 import edu.mak.course.dao.organization.interfaces.IOrganizationDAO;
 import edu.mak.course.data.FakeData;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +15,9 @@ import java.util.List;
  * @since 1.0.0
  */
 @Repository
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OrganizationDAOImpl implements IOrganizationDAO {
-    @Autowired
+
     FakeData fakeData;
 
     @Override
@@ -25,6 +27,7 @@ public class OrganizationDAOImpl implements IOrganizationDAO {
             .findFirst().orElse(null);
     }
 
+    @Override
     public Organization getByName(String name) {
         return getAll().stream()
             .filter(organization -> organization.getId().equals(name))

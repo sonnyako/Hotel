@@ -20,6 +20,10 @@
             <input class="form-control" <@spring.formInput  "form.name" "" "text"/>
             <br>
 
+            <label class="form-label">Name:</label>
+            <input class="form-control" <@spring.formInput  "form.name" "" "text"/>
+            <br>
+
             <label class="form-label">Day of birth:</label>
             <input class="form-control" <@spring.formInput  "form.birthday" "" "date"/>
             <br>
@@ -33,7 +37,8 @@
             <br>
 
             <button type="submit" class="btn btn-primary" style="margin-left: 690px; width: 200px"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">Update</button>
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">Update
+            </button>
 
         </form>
     </fieldset>

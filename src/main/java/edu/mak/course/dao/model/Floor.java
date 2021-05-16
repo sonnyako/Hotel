@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Document
+@Document(collection = "floor")
 @QueryEntity
 @Data
 @Builder(toBuilder = true)

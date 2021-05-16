@@ -4,6 +4,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -48,7 +49,7 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
     }
 
     @Bean
-    MongoTransactionManager transactionManager(MongoDatabaseFactory dbFactory) {
+    MongoTransactionManager transactionManager(@Qualifier("mongoDbFactory") MongoDatabaseFactory dbFactory) {
         return new MongoTransactionManager(dbFactory);
     }
 

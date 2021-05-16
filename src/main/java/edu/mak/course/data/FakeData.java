@@ -1,9 +1,9 @@
 package edu.mak.course.data;
 
-import edu.mak.course.dao.model.Group;
 import edu.mak.course.dao.model.Organization;
 import edu.mak.course.dao.model.OrganizationType;
 import edu.mak.course.dao.model.Traveller;
+import edu.mak.course.dao.model.TravellerGroup;
 import lombok.*;
 import org.springframework.stereotype.Repository;
 
@@ -39,6 +39,6 @@ public class FakeData {
         new Organization("2", "CHNU", OrganizationType.CONDUCTING_INTERNATIONAL_EVENTS),
         new Organization("3", "AMORE", OrganizationType.TOURIST_ORGANIZATION));
 
-    private List<Group> groups = Collections.singletonList(
-        new Group("1", "1", organizations.get(1), 10));
+    private List<TravellerGroup> travellerGroups = Collections.singletonList(
+        new TravellerGroup("1", "1", organizations.get(1), 10));
 }

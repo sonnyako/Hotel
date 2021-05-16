@@ -43,5 +43,5 @@ public class BookingClient {
     @DBRef(lazy = true)
     @CascadeSave
     @Field("group")
-    private Group group;
+    private TravellerGroup travellerGroup;
 }

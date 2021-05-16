@@ -12,6 +12,8 @@ import java.util.List;
 public interface IOrganizationDAO {
     Organization getById(String id);
 
+    Organization getByName(String name);
+
     Organization create(Organization organization);
 
     Organization update(Organization organization);

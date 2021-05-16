@@ -1,5 +1,6 @@
 package edu.mak.course.dao.model;
 
+import com.querydsl.core.annotations.QueryEntity;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -11,13 +12,13 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Document(collection = "organization")
-//@QueryEntity
+@Document
+@QueryEntity
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor(onConstructor = @__(@PersistenceConstructor))
-public class Organization {
+public class TravellerGroup {
 
     @Id
     private String id;
@@ -25,7 +26,9 @@ public class Organization {
     @Field("name")
     private String name;
 
-    @Field("type")
-    private OrganizationType type;
-}
+    @Field("organization")
+    private Organization organization;
 
+    @Field("travellerCount")
+    private int travellerCount;
+}

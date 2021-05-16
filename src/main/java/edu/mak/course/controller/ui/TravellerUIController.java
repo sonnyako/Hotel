@@ -2,7 +2,7 @@ package edu.mak.course.controller.ui;
 
 import edu.mak.course.dao.model.Traveller;
 import edu.mak.course.form.TravellerForm;
-import edu.mak.course.service.traveller.impls.TravellerServiceImpl;
+import edu.mak.course.service.impls.TravellerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,24 +59,8 @@ public class TravellerUIController {
         return "redirect:/ui/travellers/get/all/";
     }
 
-    @RequestMapping("/update/{id}")
-    public String update(Model model, @PathVariable String id) {
-
-        Traveller traveller = service.getById(id);
-
-        TravellerForm travellerForm = new TravellerForm();
-        travellerForm.setId(id);
-        travellerForm.setName(traveller.getName());
-        travellerForm.setBirthday(traveller.getBirthday().toString());
-        travellerForm.setDocumentNumber(traveller.getDocumentNumber());
-        travellerForm.setPhoneNumber(traveller.getPhoneNumber());
-        model.addAttribute("form", travellerForm);
-        return "traveller-update";
-    }
-
     @PostMapping("/update/{id}")
-    public String update(Model model, @ModelAttribute("travellerForm") TravellerForm travellerForm,
-                         @PathVariable("id") String id) {
+    public String update(@ModelAttribute("travellerForm") TravellerForm travellerForm, @PathVariable("id") String id) {
 
         Traveller traveller = new Traveller();
         traveller.setId(travellerForm.getId());

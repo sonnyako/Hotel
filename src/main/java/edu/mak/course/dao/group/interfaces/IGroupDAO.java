@@ -1,6 +1,6 @@
 package edu.mak.course.dao.group.interfaces;
 
-import edu.mak.course.dao.model.Group;
+import edu.mak.course.dao.model.TravellerGroup;
 
 import java.util.List;
 
@@ -10,13 +10,13 @@ import java.util.List;
  * @since 1.0.0
  */
 public interface IGroupDAO {
-    Group getById(String id);
+    TravellerGroup getById(String id);
 
-    Group create(Group group);
+    TravellerGroup create(TravellerGroup travellerGroup);
 
-    Group update(Group group);
+    TravellerGroup update(TravellerGroup travellerGroup);
 
-    Group delete(String id);
+    TravellerGroup delete(String id);
 
-    List<Group> getAll();
+    List<TravellerGroup> getAll();
 }
