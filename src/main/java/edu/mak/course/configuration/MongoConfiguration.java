@@ -5,6 +5,7 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -29,6 +30,9 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
     private final List<Converter<?, ?>> converters = new ArrayList<>();
 
+    @Value("${spring.data.mongodb.uri}")
+    private String mongoDbUrl;
+
     @Override
     protected String getDatabaseName() {
         return "Hotel";
@@ -36,7 +40,7 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/Hotel");
+        ConnectionString connectionString = new ConnectionString(mongoDbUrl);
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
             .build();
