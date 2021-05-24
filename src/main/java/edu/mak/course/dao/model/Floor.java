@@ -3,8 +3,8 @@ package edu.mak.course.dao.model;
 import com.querydsl.core.annotations.QueryEntity;
 import edu.mak.course.dao.annotation.CascadeSave;
 import lombok.*;
+import lombok.extern.jackson.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -17,9 +17,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "floor")
 @QueryEntity
 @Data
+@Jacksonized
 @Builder(toBuilder = true)
 @NoArgsConstructor
-@AllArgsConstructor(onConstructor = @__(@PersistenceConstructor))
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Floor {
 
     @Id

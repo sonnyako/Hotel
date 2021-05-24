@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * @since 1.0.0
  */
 @Document(collection = "organization")
-//@QueryEntity
 @Data
 @Builder(toBuilder = true)
 @NoArgsConstructor

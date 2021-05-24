@@ -4,6 +4,8 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import edu.mak.course.dao.annotation.CascadeSaveMongoEventListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +34,9 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
     @Value("${spring.data.mongodb.uri}")
     private String mongoDbUrl;
+
+    @Autowired
+    private CascadeSaveMongoEventListener cascadeSaveMongoEventListener;
 
     @Override
     protected String getDatabaseName() {

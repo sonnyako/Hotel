@@ -12,5 +12,9 @@ import java.util.Optional;
 public interface HotelService {
     Hotel update(Hotel hotel);
 
+    Hotel create(Hotel hotel);
+
+    Hotel delete(String id);
+
     Optional<Hotel> getById(String id);
 }

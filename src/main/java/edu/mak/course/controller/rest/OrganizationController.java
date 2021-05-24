@@ -66,7 +66,7 @@ public class OrganizationController {
         return service.create(organization);
     }
 
-    @Operation(summary = "Update organozation information", description = "Update organization object")
+    @Operation(summary = "Update organization information", description = "Update organization object")
     @PutMapping("/update")
     public Organization update(@RequestBody Organization organization) {
         return service.update(organization);

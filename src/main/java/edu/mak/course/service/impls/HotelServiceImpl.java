@@ -21,6 +21,11 @@ public class HotelServiceImpl implements HotelService {
     private final HotelRepository repository;
 
     @Override
+    public Hotel create(Hotel hotel) {
+        return repository.save(hotel);
+    }
+
+    @Override
     public Hotel update(Hotel hotel) {
         Optional<Hotel> result = Optional.ofNullable(hotel)
             .map(Hotel::getId)
@@ -36,5 +41,19 @@ public class HotelServiceImpl implements HotelService {
     @Override
     public Optional<Hotel> getById(String id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public Hotel delete(String id) {
+        Optional<Hotel> result = getById(id);
+        if (result.isPresent()) {
+            repository.deleteById(id);
+
+            return result.get()
+                .toBuilder()
+                .id(null)
+                .build();
+        }
+        return null;
     }
 }
