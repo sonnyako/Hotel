@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.persistence.Embedded;
 import java.io.Serializable;
 
 /**
@@ -34,6 +35,7 @@ public class BookingItem implements Serializable {
     @Field("booking")
     private Booking booking;
 
+    @Embedded
     @Field("amenity")
     private Amenity amenity;
 
