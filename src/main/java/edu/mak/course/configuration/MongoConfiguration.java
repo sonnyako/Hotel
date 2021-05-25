@@ -14,6 +14,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import java.util.List;
  * @since 1.0.0
  */
 @Configuration
+@EnableMongoAuditing
 @EnableMongoRepositories(basePackages = "edu.mak.course.dao.repository")
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
 

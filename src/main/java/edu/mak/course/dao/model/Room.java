@@ -42,6 +42,7 @@ public class Room {
     @Field("floor")
     private Floor floor;
 
+    @CascadeSave
     @Field("roomAmenities")
     private List<Amenity> roomAmenities;
 }

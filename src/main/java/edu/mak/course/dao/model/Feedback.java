@@ -4,7 +4,9 @@ import com.querydsl.core.annotations.QueryEntity;
 import edu.mak.course.dao.annotation.CascadeSave;
 import lombok.*;
 import lombok.extern.jackson.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -45,9 +47,11 @@ public class Feedback implements Serializable {
     @Field("serviceRating")
     private int serviceRating;
 
+    @CreatedDate
     @Field("createdAt")
     private Instant createdAt;
 
+    @LastModifiedDate
     @Field("updatedAt")
     private Instant updatedAt;
 }
