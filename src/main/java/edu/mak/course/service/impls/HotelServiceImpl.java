@@ -8,15 +8,16 @@ import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
-import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.aggregation.LookupOperation;
+import org.springframework.data.mongodb.core.aggregation.ProjectionOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
 /**
  * @author sonnyako <Makydon Sofiia>
@@ -70,16 +71,27 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public List<Room> getActiveRooms() {
-        LookupOperation lookupOperation = LookupOperation.newLookup()
-            .from("bookingClient")
-            .localField("room")
-            .foreignField("id").as("ordered room");
-        AggregationResults<Room> result = mongoTemplate.aggregate(
-            Aggregation.newAggregation
-                (lookupOperation, Aggregation.match
-                    (Criteria.where("bookingClient.checkOut").lt(Date.from(Instant.now())))),
-            "rooms",
-            Room.class);
-        return result.getMappedResults();
+
+        LookupOperation lookupOperationBooking = LookupOperation.newLookup().
+            from("booking").
+            localField("booking").
+            foreignField("_id").
+            as("clients_booking");
+
+        LookupOperation lookupOperationRoom = LookupOperation.newLookup().
+            from("room").
+            localField("room").
+            foreignField("_id").
+            as("clients_room");
+
+        ProjectionOperation projectToMatchModel = project()
+            .andExpression("room").as("Active room:");
+
+        Aggregation aggregation = Aggregation.newAggregation(lookupOperationBooking, lookupOperationRoom, projectToMatchModel,
+            Aggregation.match(Criteria.where("bookingClient.booking.checkOut").lt(Instant.now())));
+
+        List<Room> results = mongoTemplate.aggregate(aggregation, "rooms", Room.class).getMappedResults();
+
+        return results;
     }
 }
