@@ -1,7 +1,9 @@
 package edu.mak.course.service;
 
 import edu.mak.course.dao.model.Hotel;
+import edu.mak.course.dao.model.Room;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,4 +19,6 @@ public interface HotelService {
     Hotel delete(String id);
 
     Optional<Hotel> getById(String id);
+
+    List<Room> getActiveRooms();
 }

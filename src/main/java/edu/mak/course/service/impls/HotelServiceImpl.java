@@ -1,12 +1,21 @@
 package edu.mak.course.service.impls;
 
 import edu.mak.course.dao.model.Hotel;
+import edu.mak.course.dao.model.Room;
 import edu.mak.course.dao.repository.HotelRepository;
 import edu.mak.course.service.HotelService;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.LookupOperation;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,6 +26,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class HotelServiceImpl implements HotelService {
+
+    private final MongoTemplate mongoTemplate;
 
     private final HotelRepository repository;
 
@@ -55,5 +66,20 @@ public class HotelServiceImpl implements HotelService {
                 .build();
         }
         return null;
+    }
+
+    @Override
+    public List<Room> getActiveRooms() {
+        LookupOperation lookupOperation = LookupOperation.newLookup()
+            .from("bookingClient")
+            .localField("room")
+            .foreignField("id").as("ordered room");
+        AggregationResults<Room> result = mongoTemplate.aggregate(
+            Aggregation.newAggregation
+                (lookupOperation, Aggregation.match
+                    (Criteria.where("bookingClient.checkOut").lt(Date.from(Instant.now())))),
+            "rooms",
+            Room.class);
+        return result.getMappedResults();
     }
 }

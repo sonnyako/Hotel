@@ -1,6 +1,7 @@
 package edu.mak.course.controller.rest;
 
 import edu.mak.course.dao.model.Hotel;
+import edu.mak.course.dao.model.Room;
 import edu.mak.course.service.HotelService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -55,6 +57,11 @@ public class HotelController {
     @PostMapping("/create")
     public Hotel create(@RequestBody Hotel hotel) {
         return service.create(hotel);
+    }
+
+    @GetMapping("get/active/rooms")
+    public List<Room> getActiveRooms() {
+        return service.getActiveRooms();
     }
 
 }
